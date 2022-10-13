@@ -8,26 +8,30 @@
 </head>
 <body>
 
-<form method="post" action="#">
-    <div class="row">
-        <div class="6u">
-            <input type="text" placeholder="Name" />
-        </div>
-        <div class="6u$">
-            <input type="email" placeholder="Email" />
-        </div>
+<form id ="my-form" action="#">
+    <input type="text" name="name">
 
-        <div class="4u">
-            <input type="radio" id="demo-priority-low" checked>
-            <label for="demo-priority-low">Low Priority</label>
-        </div>
-        <div class="4u">
-            <input type="radio" id="demo-priority-normal">
-            <label for="demo-priority-normal">Normal Priority</label>
-        </div>
-        <div class="4u$">
-            <input type="radio" id="demo-priority-high">
-            <label for="demo-priority-high">High Priority</label>
+    <input type="password" name="password" autocomplete="false">
+
+
+    <label for="female">female</label>
+    <input type="radio" value="female" id="female" name="gender">
+
+    <label for="male">male</label>
+    <input type="radio" value="male" id="male" name="gender">
+
+    <select name="skills">
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+
+
+    </select>
+    <button type="submit" form="my-form">Кнопка отправки</button>
+</form>
+
+
+
 
             <script src="script.js"></script>
 </body>
