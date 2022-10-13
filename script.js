@@ -1,131 +1,3 @@
-// const  url = 'https://jsonplaceholder.typicode.com/users'
-//
-// const promise = fetch(url)
-
-// async function forExample () {
-//     try {
-//         const promise = await fetch(url)
-//         if (promise.ok) {
-//             console.log(promise)
-//         }
-//
-//     } catch (e) {
-//         console.log('catch', e)
-//         throw  Error('errorrrr')
-//     }
-//
-// }
-//
-//
-// forExample()
-
-
- // function forExample2 () {
- //
- //    const promise =  fetch(url)
- //    const result =  promise.json()
-
- //    console.log(result)
-    //promise.text()
-    //promise.json()
-    //promise.formData()
-    //promise.blob()
-    //promise.arrayBuffer()
-// }
-
-//forExample2()
-
-// function forExample3 () {
-//
-//     const promise = fetch(url)
-//
-//     promise
-//         .then(result => result.json())
-//         .then(result => console.log(result))
-// }
-// forExample3()
-
-// function forExample4 () {
-//
-//     const promise = fetch(url)
-//
-//    return fetch(url)
-// forExample4()
-
-// const  url = 'https://jsonplaceholder.typicode.com/posts'
-//
-// async  function postPosts() {
-//     let promise = await fetch(url,{
-//         method:'POST',
-//         body: ({
-//             title:'foo',
-//             body:'bar',
-//             userId:1
-//         }),
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-//     try {
-//         const promise = await fetch(url)
-//         if (promise.ok) {
-//             console.log(promise)
-//         }
-//     } catch (e) {
-//         console.log('catch', e)
-//         throw  Error('errorrrr')
-//     }
-//     const result = await promise.json();
-//     console.log(result)
-// }
-// postPosts()
-
-//////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const url = 'https://jsonplaceholder.typicode.com/posts/1'
-//
-// async function zapros() {
-//     let promise = await fetch(url,{
-//         method:'delete', body: ({
-//             userId: 13
-//         }),
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-//     try {
-//         const promise = await fetch(url)
-//         if (promise.ok) {
-//             console.log(promise)
-//         }
-//     } catch (e) {
-//         console.log('catch', e)
-//         throw  Error('errorrrr')
-//     }
-//     const result = await promise.json();
-//     console.log(result)
-//
-//
-//
-// }
-
-// zapros()
-
-
-
 
 
 
@@ -148,37 +20,54 @@
 //       .then(response => response.json())
 //       .then(result => console.log(typeof result.title === 'string'))
 
+//
+//
 
 
-const myForm = document.getElementById('my-form')
 
-function handleSubmit(e) {
-    e.preventDefault()
+// const myForm = document.getElementById('my-form')
+//
 
-    const formData = new FormData()
-    console.log(formData)
+// function declaration
 
-    for (const key in formData) {
-        console.log(key)
-    }
+//
+// function handleSubmit(e) {
+//     e.preventDefault()
+//
+//     const formData = new FormData(myForm)
+//     console.log(formData)
+//
+//
+//     formData.append('new field', 'строка')
+//
+//     let a = formData.has( 'new field')
+//
+//     for (const key in formData) {
+//         console.log(key)
+//     }
+//
+//     for (const key in formData) {
+//         if (FormData.prototype.hasOwnProperty(key)) {
+//             console.log('FormData key', key)
+//         }
+//     }
 
-    // for (const key in formData) {
-    //     if (FormData.prototype.hasOwnProperty(key)) {
-    //         console.log('FormData key', key)
-    //     }
-    // }
+    //handleSubmitFormData(formData)
+// }
 
-    handleSubmitFormData(formData)
-}
-
-myForm.addEventListener('submit', handleSubmit)
-
-
-const  handleSubmitFormData = (e) => {
-    console.log(this)
-}
-const url = 'https://jsonplaceholder.typicode.com/posts'
-
+//
+//
+// myForm.addEventListener('submit', handleSubmit)
+//
+//
+// const  handleSubmitFormData = (e) => {
+//     console.log(this)
+// }
+// const url = 'https://jsonplaceholder.typicode.com/posts'
+//
+//
+// //function expession
+//
 // const handleSubmitFormData = (formData) => {
 //     fetch(url, {
 //         method:'POST',
@@ -191,3 +80,39 @@ const url = 'https://jsonplaceholder.typicode.com/posts'
 // }
 //
 // myForm.addEventListener('submit', handleSubmit)
+
+
+//методы
+//formData.append(name, value)
+//formData.has(name)
+//formData.delete(name)
+
+const myForm = document.getElementById('my-form')
+const input = document.getElementById('picture')
+
+ myForm.addEventListener('submit', function (e) {
+     e.preventDefault()
+     const formData = new FormData()
+
+
+    Array.from(this).forEach(({name, value}) =>{
+    if (value) {
+        formData.append(name, value)
+    }
+    })
+     for (const key of formData){
+         console.log(key)
+     }
+ })
+
+function postData(formData) {
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: 'POST',
+        headers: {
+            'Content-type' : 'multipart/form-data'
+        },
+        body: formData
+    })
+}
+
+
